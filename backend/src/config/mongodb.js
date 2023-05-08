@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 
 const MONGODB_URI = process.env.DB_URLMONGO || 'mongodb://localhost:27017/test'
 
-//mongoose.connect(MONGODB_URI)
+// mongoose.connect(MONGODB_URI)
 
 // Exportamos la función de conexión
 const dbConnect = async () => {
