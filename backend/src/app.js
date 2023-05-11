@@ -2,7 +2,7 @@ import express from 'express'
 import cors from 'cors'
 import dotenv from 'dotenv'
 import dbConnect from './config/mongodb.js'
-import trackUsers from './routes/users.js'
+import { recipeRoute, trackRoute, userRoute } from './routes/index.js'
 
 // Cargamos las variables de entorno
 dotenv.config()
@@ -10,9 +10,13 @@ dotenv.config()
 const app = express()
 
 app.use(cors())
+app.use(express.json())
 
 // configuramos las routes
-app.use('/api', trackUsers)
+app.use('/api', userRoute)
+app.use('/api', userRoute)
+
+app.use('/api', recipeRoute)
 
 const PORT = process.env.PORT || 3000
 
