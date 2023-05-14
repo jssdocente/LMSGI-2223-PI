@@ -77,6 +77,8 @@ async function transformOriginRecipesAndInsertModelToBD() {
 
         queryLetters.map(async (letter) => {
             const remoteRecipes = await fetchRecipes(letter)
+
+
             // const remoteRecipes = await fetchRecipesMock(letter)
             console.log(`recetas obtenidas con la letra '${letter}': ${remoteRecipes.meals.length}}`);
 
@@ -102,7 +104,7 @@ async function transformOriginRecipesAndInsertModelToBD() {
 
     // Ahora las inserto en la BD
     await Promise.all(
-        modelRecipes.flat().map(async (recipe) => {
+        modelRecipes.map(async (recipe) => {
             try {
                 await recipeModel.create(recipe)
             } catch (error) {

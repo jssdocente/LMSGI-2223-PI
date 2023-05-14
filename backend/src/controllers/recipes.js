@@ -1,3 +1,4 @@
+import { query } from 'express'
 import { recipeModel } from '../models/index.js'
 
 /**
@@ -12,20 +13,37 @@ const getItems = async (req, res) => {
     res.send({ data })
 }
 
+const getItemById = async (req, res) => {
+    console.log(`getItemByID: param ${req.params.id}`)
+    // res.send({ data })
+    const data = await recipeModel.find({ id: req.params.id })
+    res.send({ data })
+}
+
+const getItemBySearch = async (req, res) => {
+    console.log(`getItemBySearch: param ${req.query.q}`)
+    // res.send({ data })
+    // const data = await recipeModel.find({ name: `"${req.query.q}"` })
+    const queryMongo = `${req.query.q}`
+    const data = await recipeModel.find({ name: queryMongo })
+    res.send({ data })
+}
+
 /**
  * Método para crear un item
  * @param {*} req
  * @param {*} res
  */
 const createItem = async (req, res) => {
-    const { body } = req
-    console.log(`recipe body: ${body}`)
+    const body = req.body
+    // console.log(`recipe body: ${body}`)
+    console.log(JSON.stringify(body, null, 2))
 
-    // const data = await recipeModel.create(body)
+    const data = await recipeModel.create(body)
 
     // console.log(body)
-    res.send({ body })
+    res.send({ data })
 }
 
 
-export { getItems, createItem }
+export { getItems, createItem, getItemById, getItemBySearch }

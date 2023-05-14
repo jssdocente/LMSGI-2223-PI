@@ -16,6 +16,7 @@ app.use(express.json())
 app.use('/api', userRoute)
 app.use('/api', userRoute)
 
+// Rutas de recetas
 app.use('/api', recipeRoute)
 
 const PORT = process.env.PORT || 3000

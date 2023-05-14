@@ -24,6 +24,7 @@ const recipeSchema = new mongoose.Schema(
             default: ''
         },
         sourceImage: String,
+
         tags: {
             type: [String],
             default: []
