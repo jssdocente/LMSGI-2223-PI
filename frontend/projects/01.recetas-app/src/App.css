@@ -11,3 +11,25 @@
   will-change: filter;
   transition: filter 300ms;
 }
+
+.page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+}
+
+form {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+li {
+  list-style: none;
+}
