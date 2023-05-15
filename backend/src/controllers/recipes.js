@@ -1,4 +1,3 @@
-import { query } from 'express'
 import { recipeModel } from '../models/index.js'
 
 /**
@@ -10,7 +9,7 @@ const getItems = async (req, res) => {
     // const data = ['track1', 'track2']
     // res.send({ data })
     const data = await recipeModel.find({})
-    res.send({ data })
+    res.send({ recetas: data })
 }
 
 const getItemById = async (req, res) => {
@@ -21,12 +20,14 @@ const getItemById = async (req, res) => {
 }
 
 const getItemBySearch = async (req, res) => {
-    console.log(`getItemBySearch: param ${req.query.q}`)
-    // res.send({ data })
-    // const data = await recipeModel.find({ name: `"${req.query.q}"` })
-    const queryMongo = `${req.query.q}`
-    const data = await recipeModel.find({ name: queryMongo })
-    res.send({ data })
+    console.log(`getItemBySearch: param ${req.query.r}`)
+    if (!req.query.r)
+        res.send({ recetas: [] })
+
+    const queryMongo = `${req.query.r}`
+    console.log(queryMongo)
+    const data = await recipeModel.find({ name: { $regex: req.query.r } })
+    res.send({ recetas: data })
 }
 
 /**
