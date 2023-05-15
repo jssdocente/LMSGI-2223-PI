@@ -2,8 +2,6 @@ import React from 'react'
 
 function ListOfRecipes({ recipes }) {
 
-  const hasRecipes = recipes?.length > 0
-
   return (
     <div className='gallery' >
       {

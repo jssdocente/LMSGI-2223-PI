@@ -2,16 +2,25 @@ import './App.css'
 import recetasQueryResults from './mocks/recetas-results.json'
 import recetasQueryNoResults from './mocks/recetas-no-results.json'
 import { RecipesList } from './components/Recipes'
+import { useRecipes } from './hooks/useRecipes'
+import { useState } from 'react'
 
 function App() {
 
-  const recipes = recetasQueryResults.recetas
+  const [search, setSearch] = useState('')
+  const { recipes, getRecipes } = useRecipes()
+
+  const recipes2 = recetasQueryResults.recetas
 
   const handleSubmit = (e) => {
     e.preventDefault()
     var formData = new FormData(e.target)
     const formValues = Object.fromEntries(formData)
     console.log(formValues)
+
+    let query = formValues.query
+    // setSearch(query)
+    getRecipes({ search: query })
 
     // console.log(e.target)
   }
@@ -29,6 +38,10 @@ function App() {
         </header>
 
         <RecipesList recipes={recipes} />
+
+        {
+
+        }
 
       </div>
     </main>
