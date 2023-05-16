@@ -4,10 +4,10 @@ import recetasQueryNoResults from './mocks/recetas-no-results.json'
 import { RecipesList } from './components/Recipes'
 import { useRecipes } from './hooks/useRecipes'
 import { useState } from 'react'
+import CategoryFilter from './components/CategoryFilter'
 
 function App() {
 
-  const [search, setSearch] = useState('')
   const { recipes, getRecipes } = useRecipes()
 
   const recipes2 = recetasQueryResults.recetas
@@ -37,6 +37,7 @@ function App() {
           </form>
         </header>
 
+        <CategoryFilter />
         <RecipesList recipes={recipes} />
 
         {
