@@ -1,8 +1,9 @@
 import express from 'express'
 import cors from 'cors'
 import dotenv from 'dotenv'
-import dbConnect from './config/mongodb.js'
+import { dbConnect } from './config/mongodb.js'
 import { recipeRoute, trackRoute, userRoute } from './routes/index.js'
+
 
 // Cargamos las variables de entorno
 dotenv.config()

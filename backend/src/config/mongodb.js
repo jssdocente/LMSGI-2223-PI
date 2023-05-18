@@ -1,11 +1,15 @@
 import mongoose from 'mongoose'
+import dotenv from 'dotenv'
 
-const MONGODB_URI = process.env.DB_URLMONGO || 'mongodb://localhost:27017/test'
+dotenv.config()
+
+const MONGODB_URI = process.env.DB_URLMONGO || 'mongodb://127.0.0.1:27017/test'
 
 // mongoose.connect(MONGODB_URI)
 
 // Exportamos la función de conexión
 const dbConnect = async () => {
+    console.log('Connecting to MongoDB... a través de la URL: ', MONGODB_URI)
     await mongoose.connect(MONGODB_URI,
         {
             useNewUrlParser: true,
@@ -13,5 +17,5 @@ const dbConnect = async () => {
         })
 }
 
-export default dbConnect
+export { dbConnect }
 
