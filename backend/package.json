@@ -5,11 +5,10 @@
   "main": "app.js",
   "type": "module",
   "scripts": {
-    "build:clean": "rm -rf dist",
-    "build": "npm run build:clean && babel ./src --out-dir ./dist --source-maps",
+    "build": "npm install",
     "serve": "node ./src/app.js",
     "start:dev": "nodemon src/app.js",
-    "start:prod": "node ./dist/app.js",
+    "start:prod": "node ./src/app.js",
     "impdata": "nodemon src/utils/recipesHelper.js"
   },
   "keywords": [],
@@ -22,11 +21,6 @@
     "mongoose": "^7.1.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.21.5",
-    "@babel/core": "^7.21.8",
-    "@babel/node": "^7.20.7",
-    "@babel/plugin-syntax-import-assertions": "^7.20.0",
-    "@babel/preset-env": "^7.21.5",
     "eslint": "^8.0.1",
     "eslint-config-prettier": "^8.8.0",
     "eslint-config-standard": "^17.0.0",

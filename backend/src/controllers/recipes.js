@@ -9,6 +9,7 @@ const getItems = async (req, res) => {
     // const data = ['track1', 'track2']
     // res.send({ data })
     const listaRecetas = await recipeModel.find({})
+    console.log('recetas obtenidas: ' + listaRecetas.length)
     res.send({
         data: listaRecetas
     })
