@@ -5,8 +5,11 @@
   "main": "app.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev:start": "nodemon src/app.js",
+    "build:clean": "rm -rf dist",
+    "build": "pnpm run build:clean && babel ./src --out-dir ./dist --source-maps",
+    "serve": "node dist/app.js",
+    "start:dev": "nodemon src/app.js",
+    "start:prod": "node ./dist/app.js",
     "impdata": "nodemon src/utils/recipesHelper.js"
   },
   "keywords": [],
@@ -19,6 +22,11 @@
     "mongoose": "^7.1.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.21.5",
+    "@babel/core": "^7.21.8",
+    "@babel/node": "^7.20.7",
+    "@babel/plugin-syntax-import-assertions": "^7.20.0",
+    "@babel/preset-env": "^7.21.5",
     "eslint": "^8.0.1",
     "eslint-config-prettier": "^8.8.0",
     "eslint-config-standard": "^17.0.0",

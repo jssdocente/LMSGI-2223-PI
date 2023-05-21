@@ -11,6 +11,7 @@ dotenv.config()
 const app = express()
 
 app.use(cors())
+// configuramos express para que entienda las peticiones con formato JSON 
 app.use(express.json())
 
 // configuramos las routes
